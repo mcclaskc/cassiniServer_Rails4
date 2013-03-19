@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  request: MyString
+  start_scet: MyString
+  end_scet: MyString
+
+two:
+  request: MyString
+  start_scet: MyString
+  end_scet: MyString
