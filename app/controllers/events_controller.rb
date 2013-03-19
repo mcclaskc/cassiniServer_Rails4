@@ -1,3 +1,5 @@
+require 'csv'
+
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -61,6 +63,18 @@ class EventsController < ApplicationController
     end
   end
 
+  def import_csv
+    begin
+      if params[:dump][:file].nil?
+        raise "File not found. Did you remember to choose a file to upload?"      
+      end
+
+
+    rescue => e
+      flash[:error] = e
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
@@ -71,4 +85,5 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:request, :start_scet, :end_scet)
     end
+
 end
