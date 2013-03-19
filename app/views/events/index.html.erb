@@ -1,6 +1,6 @@
 <h1>Listing Events</h1>
 
-<table>
+<table cellpadding="10">
   <thead>
     <tr>
       <th>Request</th>
@@ -29,3 +29,9 @@
 <br />
 
 <%= link_to 'New Event', new_event_path %>
+
+<%= form_tag({:action => :import_csv}, :multipart => true) do %>
+  <%= file_field_tag 'csv' %>
+  <%= submit_tag("Upload") %>
+<% end %>
+
