@@ -66,13 +66,11 @@ class EventsController < ApplicationController
   def import_csv
     begin
       file = params[:csv]
-      unless file  
-        raise "File not found. Did you remember to choose a file to upload?"      
-      end
+      raise "File not found. Did you remember to choose a file to upload?" unless file     
       Event.parse_and_create(file)
     rescue => e
-      raise e
-      #flash[:error]
+      #raise e
+      flash[:notice] = " * An error occured during import: " + e.message;
     end
     redirect_to :back
   end

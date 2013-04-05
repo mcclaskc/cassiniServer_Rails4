@@ -1,5 +1,4 @@
 <h1>Listing Events</h1>
-
 <%= link_to 'Create New Event', new_event_path %>
 <br/><br/>
 Or Upload a File:
@@ -7,6 +6,7 @@ Or Upload a File:
   <%= file_field_tag 'csv' %>
   <%= submit_tag("Upload") %>
 <% end %>
+<%= flash[:notice] %>
 <br/>
 <table cellpadding="10">
   <thead>
