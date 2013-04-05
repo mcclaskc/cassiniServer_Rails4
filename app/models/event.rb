@@ -1,7 +1,12 @@
 class Event < ActiveRecord::Base
 	
-	def self.parse_and_create(file)
-		csv = CSV.parse(file.read)
+	# Parses a csv file and creates an Event for each row.
+	# * It is very hacky and inflexible at the moment. 
+	# * I just made sure I was able to input the txt file 
+	# * we recieved.  It is easily alterable though.
+	# # Chris McClaskey - Cassini Senior Project Team
+	def self.parse_and_create(csv_file)
+		csv = CSV.parse(csv_file.read)
     csv.each do |r|
       column = 0
       looking_for_next = false
@@ -30,9 +35,7 @@ class Event < ActiveRecord::Base
         end
       end
       event = Event.new(request: request, start_scet: start_scet, end_scet: end_scet)
-      # p request
-      # p start_scet
-      # p end_scet
+      #TODO add error handling for possible record saving issues
       event.save!  
     end
 	end
