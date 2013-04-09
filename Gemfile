@@ -12,6 +12,7 @@ group :development, :test do
 end
 group :production do
   gem 'mysql2'
+  #adding a comment to do a test commit cuz internet broke during last deploy -__-
 end
 
 # Gems used only for assets and not required
