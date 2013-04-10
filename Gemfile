@@ -11,7 +11,7 @@ group :development, :test do
   gem 'sqlite3'
 end
 group :production do
-  gem 'pg'
+  gem 'mysql2'
   #adding a comment to do a test commit cuz internet broke during last deploy -__-
 end
 
