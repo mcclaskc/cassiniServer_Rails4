@@ -1,7 +1,7 @@
 cassiniServer_Rails4
 ====================
 
-[http://cassini-spacecraft-viewer.herokuapp.com/][]
+[live on heroku][http://cassini-spacecraft-viewer.herokuapp.com/]
 
 Web application half of the [cassini-spacecraft-viewer project](https://github.com/mcclaskc/Cassini-Spacecraft-Viewer)
 
