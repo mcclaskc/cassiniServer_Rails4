@@ -11,12 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130319001756) do
+ActiveRecord::Schema.define(version: 20130413205831) do
+
+  create_table "data_files", force: true do |t|
+    t.string   "path"
+    t.date     "file_date"
+    t.integer  "file_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", force: true do |t|
     t.string   "request"
     t.string   "start_scet"
     t.string   "end_scet"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "file_types", force: true do |t|
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,31 @@
+<h1>Listing data_files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Path</th>
+      <th>File date</th>
+      <th>File type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @data_files.each do |data_file| %>
+    <tr>
+      <td><%= data_file.path %></td>
+      <td><%= data_file.file_date %></td>
+      <td><%= data_file.file_type_id %></td>
+      <td><%= link_to 'Show', data_file %></td>
+      <td><%= link_to 'Edit', edit_data_file_path(data_file) %></td>
+      <td><%= link_to 'Destroy', data_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Data file', new_data_file_path %>

@@ -1,4 +1,8 @@
 CassiniServerRails4::Application.routes.draw do
+  resources :file_types
+
+  resources :data_files
+
   resources :events
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  path: MyString
+  file_date: 2013-04-13
+  file_type_id: 1
+
+two:
+  path: MyString
+  file_date: 2013-04-13
+  file_type_id: 1
