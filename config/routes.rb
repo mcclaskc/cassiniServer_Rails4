@@ -22,6 +22,8 @@ CassiniServerRails4::Application.routes.draw do
   resource :pages do
     get 'index'
   end
+
+  get 'api/uvis'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
