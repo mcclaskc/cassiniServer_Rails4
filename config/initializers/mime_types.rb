@@ -4,4 +4,4 @@
 # Mime::Type.register "text/richtext", :rtf
 # Mime::Type.register_alias "text/html", :iphone
 
-Mime::Type.register "application/vdn.unity", :unity3d
+Mime::Type.register "application/x-unity", :unity3d
