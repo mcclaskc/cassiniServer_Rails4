@@ -22,7 +22,7 @@ class DataFile < ActiveRecord::Base
 
 		DataFile.new(path: title, file_date: file_date).save!
 
-		path = File.join('public/data_files/', title)
+		path = File.join('public/files/', title)
 		File.open(path, "wb") { |f| f.write(data_file.read) }
 		
 	end
