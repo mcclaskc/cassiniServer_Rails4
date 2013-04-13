@@ -69,7 +69,7 @@ class DataFilesController < ApplicationController
     begin
       file = params[:file]
       raise "File not found. Did you remember to choose a file to upload?" unless file     
-      Event.parse_and_create(file)
+      DataFile.import_and_create(file)
     rescue => e
       flash[:notice] = " * An error occured during import: " + e.message;
     end

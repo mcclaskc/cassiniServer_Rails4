@@ -15,6 +15,10 @@ CassiniServerRails4::Application.routes.draw do
     post 'import_csv'
   end
 
+  resource :data_files do
+    post 'import_file'
+  end
+
   resource :pages do
     get 'index'
   end
