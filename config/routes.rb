@@ -5,10 +5,14 @@ CassiniServerRails4::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root to: 'events#index'
+  root to: 'pages#index'
 
   resource :events do
-      post 'import_csv'
+    post 'import_csv'
+  end
+
+  resource :pages do
+    get 'index'
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
