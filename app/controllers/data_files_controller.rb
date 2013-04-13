@@ -61,6 +61,21 @@ class DataFilesController < ApplicationController
     end
   end
 
+  # Page to which the upload csv form is sent. It checks to see if the file is there, then 
+  # calls Event.parse_and_create(file).  Errors are caught and rendered after redirected 
+  # back to the Events index page. 
+  # # Chris McClaskey - Cassini Senior Project Team  
+  def import_file
+    begin
+      file = params[:file]
+      raise "File not found. Did you remember to choose a file to upload?" unless file     
+      Event.parse_and_create(file)
+    rescue => e
+      flash[:notice] = " * An error occured during import: " + e.message;
+    end
+    redirect_to :back
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_data_file
