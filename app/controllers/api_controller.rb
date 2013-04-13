@@ -3,7 +3,8 @@ class ApiController < ApplicationController
 		if params[:date]
 			@response = "[success!] TODO return json"		
 		else
-			@response = "Received No Date Param"
+			uvis = DataFile.first
+			@response = {:uvis => {:path => uvis.path, :date => uvis.file_date}}
 		end
 
 		respond
