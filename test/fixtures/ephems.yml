@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  x: 1.5
+  'y': 1.5
+  z: 1.5
+  timestamp: 2013-04-13 19:31:39
+  body_id: 1
+
+two:
+  x: 1.5
+  'y': 1.5
+  z: 1.5
+  timestamp: 2013-04-13 19:31:39
+  body_id: 1

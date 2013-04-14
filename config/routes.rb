@@ -1,4 +1,6 @@
 CassiniServerRails4::Application.routes.draw do
+  resources :ephems
+
   resources :file_types
 
   resources :data_files

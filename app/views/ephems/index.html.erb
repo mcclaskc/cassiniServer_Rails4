@@ -1,0 +1,35 @@
+<h1>Listing ephems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>X</th>
+      <th>Y</th>
+      <th>Z</th>
+      <th>Timestamp</th>
+      <th>Body</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ephems.each do |ephem| %>
+    <tr>
+      <td><%= ephem.x %></td>
+      <td><%= ephem.y %></td>
+      <td><%= ephem.z %></td>
+      <td><%= ephem.timestamp %></td>
+      <td><%= ephem.body_id %></td>
+      <td><%= link_to 'Show', ephem %></td>
+      <td><%= link_to 'Edit', edit_ephem_path(ephem) %></td>
+      <td><%= link_to 'Destroy', ephem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Ephem', new_ephem_path %>

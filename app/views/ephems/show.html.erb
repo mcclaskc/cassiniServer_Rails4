@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>X:</strong>
+  <%= @ephem.x %>
+</p>
+
+<p>
+  <strong>Y:</strong>
+  <%= @ephem.y %>
+</p>
+
+<p>
+  <strong>Z:</strong>
+  <%= @ephem.z %>
+</p>
+
+<p>
+  <strong>Timestamp:</strong>
+  <%= @ephem.timestamp %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @ephem.body_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_ephem_path(@ephem) %> |
+<%= link_to 'Back', ephems_path %>
