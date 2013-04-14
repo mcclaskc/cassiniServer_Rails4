@@ -19,9 +19,7 @@ CassiniServerRails4::Application.routes.draw do
     post 'import_file'
   end
 
-  resource :pages do
-    get 'index'
-  end
+  get 'pages/index'
 
   get 'api/uvis'
 
