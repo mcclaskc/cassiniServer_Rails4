@@ -1,0 +1,27 @@
+<h1>Listing bodies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bodies.each do |body| %>
+    <tr>
+      <td><%= body.name %></td>
+      <td><%= link_to 'Show', body %></td>
+      <td><%= link_to 'Edit', edit_body_path(body) %></td>
+      <td><%= link_to 'Destroy', body, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Body', new_body_path %>

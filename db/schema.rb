@@ -11,12 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130413205831) do
+ActiveRecord::Schema.define(version: 20130416164125) do
+
+  create_table "bodies", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "data_files", force: true do |t|
     t.string   "path"
     t.date     "file_date"
     t.integer  "file_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ephems", force: true do |t|
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
+    t.datetime "timestamp"
+    t.integer  "body_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
