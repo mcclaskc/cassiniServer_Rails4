@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th></th>
       <th></th>
@@ -13,6 +14,7 @@
   <tbody>
     <% @bodies.each do |body| %>
     <tr>
+      <td><%= body.id %></td>
       <td><%= body.name %></td>
       <td><%= link_to 'Show', body %></td>
       <td><%= link_to 'Edit', edit_body_path(body) %></td>
