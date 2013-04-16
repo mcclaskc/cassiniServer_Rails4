@@ -1,3 +1,5 @@
+require 'csv'
+
 class Event < ActiveRecord::Base
 	
 	# Parses a csv file and creates an Event for each row.

@@ -63,9 +63,9 @@ class EphemsController < ApplicationController
 
   def import_csv
     begin
-      file = params[:file]
+      file = params[:csv]
       raise "File not found. Did you remember to choose a file to upload?" unless file     
-      Ephem.import_and_create(file)
+      Ephem.parse_and_create(file)
     rescue => e
       flash[:notice] = " * An error occured during import: " + e.message;
     end
