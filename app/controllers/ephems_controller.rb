@@ -61,6 +61,17 @@ class EphemsController < ApplicationController
     end
   end
 
+  def import_file
+    begin
+      file = params[:file]
+      raise "File not found. Did you remember to choose a file to upload?" unless file     
+      Ephem.import_and_create(file)
+    rescue => e
+      flash[:notice] = " * An error occured during import: " + e.message;
+    end
+    redirect_to :back
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ephem

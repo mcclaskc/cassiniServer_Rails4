@@ -19,6 +19,10 @@ CassiniServerRails4::Application.routes.draw do
     post 'import_csv'
   end
 
+  resource :ephems do
+    post 'import_csv'
+  end
+
   resource :data_files do
     post 'import_file'
   end
