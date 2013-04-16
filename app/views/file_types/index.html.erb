@@ -4,6 +4,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Title</th>
       <th></th>
       <th></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @file_types.each do |file_type| %>
     <tr>
+      <td><%= file_type.id %></td>
       <td><%= file_type.title %></td>
       <td><%= link_to 'Show', file_type %></td>
       <td><%= link_to 'Edit', edit_file_type_path(file_type) %></td>
