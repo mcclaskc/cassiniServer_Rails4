@@ -7,6 +7,10 @@ Or Upload a File:
   <%= submit_tag("Upload") %>
 <% end %>
 <%= flash[:notice] %>
+<% if @upload_time %>
+    <p>Time to upload: <%= @upload_time %></p>
+    <p>Failed rows: <%= @errors.each { |e| e.id } %>
+<% end %>
 <br/>
 <table>
   <thead>

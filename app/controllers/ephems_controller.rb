@@ -65,11 +65,16 @@ class EphemsController < ApplicationController
     begin
       file = params[:csv]
       raise "File not found. Did you remember to choose a file to upload?" unless file     
-      Ephem.parse_and_create(file)
+      start = Time.now
+      errors = Ephem.parse_and_create(file)
+      upload_time = Time.now - start
+      notice = "Upload Time: #{upload_time}\nFailed Rows: "
+      errors.each {|e| notice << "#{e[:id]}, " }
+      flash[:notice] = notice
     rescue => e
-      flash[:notice] = " * An error occured during import: " + e.message;
+      flash[:notice] = " * An error occured during import: #{e.inspect}"
     end
-    redirect_to :back
+    redirect_to :back, :errors => errors, :upload_time => upload_time
   end
 
   private
