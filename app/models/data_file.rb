@@ -4,7 +4,13 @@ class DataFile < ActiveRecord::Base
 		#data_file is expected to be of type ActionDispatch::Http::UploadedFile
 
 		title = data_file.original_filename
-		
+		file_type_id = nil
+		FileType.pluck(:title, :id).each do |f|
+			if title.downcase.include? f[0].downcase
+				file_type_id = f[1]
+				break
+			end
+		end
 		#uvisFOV_titan_2009-JUN-23.dat
 		string_date = ""
 		under_count = 0
@@ -23,6 +29,6 @@ class DataFile < ActiveRecord::Base
 		path = File.join('public/files/', title)
 		File.open(path, "wb") { |f| f.write(data_file.read) }
 		
-		DataFile.new(path: 'files/'+title, file_date: file_date).save!
+		DataFile.new(path: 'files/'+title, file_date: file_date, file_type_id: file_type_id).save!
 	end
 end
