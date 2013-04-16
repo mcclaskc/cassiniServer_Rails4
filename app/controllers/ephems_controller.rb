@@ -61,7 +61,7 @@ class EphemsController < ApplicationController
     end
   end
 
-  def import_file
+  def import_csv
     begin
       file = params[:file]
       raise "File not found. Did you remember to choose a file to upload?" unless file     

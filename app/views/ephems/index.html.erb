@@ -1,5 +1,13 @@
 <h1>Listing ephems</h1>
-
+<%= link_to 'New Ephem', new_ephem_path %>
+<br/><br/>
+Or Upload a File:
+<%= form_tag({:action => :import_csv}, :multipart => true) do %>
+  <%= file_field_tag 'csv' %>
+  <%= submit_tag("Upload") %>
+<% end %>
+<%= flash[:notice] %>
+<br/>
 <table>
   <thead>
     <tr>
@@ -32,4 +40,3 @@
 
 <br />
 
-<%= link_to 'New Ephem', new_ephem_path %>
