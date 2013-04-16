@@ -9,12 +9,12 @@
 file_types = FileType.create([{title: "uvis"}, {title: "ephem"}])
 
 bodies = Body.create([
-						{name: "Rhea"}
-						{name: "Mimas"}
-						{name: "Iapetus"}
-						{name: "Enceladus"}
-						{name: "Titan"}
-						{name: "Sun"}
-						{name: "Dione"}
+						{name: "Rhea"},
+						{name: "Mimas"},
+						{name: "Iapetus"},
+						{name: "Enceladus"},
+						{name: "Titan"},
+						{name: "Sun"},
+						{name: "Dione"},
 						{name: "Cassini"}
 					])
