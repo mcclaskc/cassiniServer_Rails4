@@ -29,7 +29,7 @@ CassiniServerRails4::Application.routes.draw do
 
   get 'pages/index'
 
-  get 'api/uvis'
+  get 'api/files'
   get 'api/ephem'
   get 'api/events'
 

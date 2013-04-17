@@ -1,10 +1,10 @@
 class ApiController < ApplicationController
-	def uvis
+	def files
 		prepare_response
 		check_file_type
 		check_date
-			if @response[:status] = 200
-				
+			if @response[:status] == 200
+				@response[:content] = DataFile.where(file_date: @date, file_type_id: @file_type_id)
 			end	
 		respond
 	end
@@ -60,10 +60,10 @@ class ApiController < ApplicationController
 			@end_date = params['end_date']
 			begin
 			 	@date = Date.parse(@date)
-			 	@end_date = Date.parse(@date_time)
+			 	@end_date = Date.parse(@date_time) if @end_date
 			rescue => e
 			 	@response[:status] = 502
-				@response[:details] = "Invalid datetime"
+				@response[:details] = "Invalid date"
 			end 
 		else
 			@response[:status] = 501
@@ -71,13 +71,12 @@ class ApiController < ApplicationController
 		end
 	end
 
-	def get_file_type_id
+	def check_file_type
 		if file_type = params['file_type']
-			file_type_id = nil
 			FileType.pluck(:id, :title).each do |ft|
-				file_type_id = ft[0] if file_type.downcase.include? ft[1].downcase
+				@file_type_id = ft[0] if file_type.downcase.include? ft[1].downcase
 			end
-			if file_type_id.nil?
+			if @file_type_id.nil?
 				@response[:status] = 502
 				@response[:details] = "Invalid File Type"
 			end
