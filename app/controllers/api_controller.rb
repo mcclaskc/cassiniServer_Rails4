@@ -19,6 +19,8 @@ class ApiController < ApplicationController
 
 	def events
 		prepare_response
+		@response[:status] = 404
+		@response[:details] = "Invalid Request"
 		respond
 	end
 
