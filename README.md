@@ -1,14 +1,25 @@
 cassiniServer_Rails4
 ====================
-
-[http://cassini-spacecraft-viewer.herokuapp.com/](http://cassini-spacecraft-viewer.herokuapp.com/)
-
 Web application half of the [cassini-spacecraft-viewer project](https://github.com/mcclaskc/Cassini-Spacecraft-Viewer)
 
----
+Live Site: [http://cassini-spacecraft-viewer.herokuapp.com/](http://cassini-spacecraft-viewer.herokuapp.com/)
 
-update 2: Rails 4 is working on heroku!
 
-update:  the free paas services don't use rails 4 yet so it can only live in my localhost for now :(
+System Dependencies
+-----------------
+* Ruby 2.0.0p0 (recommend rvm)
+* PostgreSQL 
 
-rails 4 version of cassiniServer.  Will hopefully become the main
+Environment Setup
+-----------------
+
+### Source Control
+* Git
+* Github Repository: https://github.com/mcclaskc/cassiniServer_Rails4
+* Github cloning instructions: https://help.github.com/articles/fork-a-repo
+
+### Installing Ruby on Rails
+
+### Running a Local Server 
+
+
