@@ -14,7 +14,11 @@ class ApiController < ApplicationController
 		check_datetime
 		if @response[:status] == 200
 			begin
-				@response[:content] = Ephem.where(timestamp: @datetime)
+				if @end_datetime
+					@response[:content] = Ephem.where(timestamp: @datetime..@end_datetime).select("body_id, x, y, z,timestamp")
+				else
+					@response[:content] = Ephem.where(timestamp: @datetime).select("body_id, x, y, z,timestamp")
+				end
 			rescue => e
 				@response[:status] = 500
 				@response[:details] = e.message
