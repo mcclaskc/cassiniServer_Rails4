@@ -4,7 +4,7 @@ class BodiesController < ApplicationController
   # GET /bodies
   # GET /bodies.json
   def index
-    @bodies = Body.all
+    @bodies = Body.page(params[:page])
   end
 
   # GET /bodies/1

@@ -4,7 +4,7 @@ class FileTypesController < ApplicationController
   # GET /file_types
   # GET /file_types.json
   def index
-    @file_types = FileType.all
+    @file_types = FileType.page(params[:page])
   end
 
   # GET /file_types/1
