@@ -4,7 +4,7 @@ class DataFilesController < ApplicationController
   # GET /data_files
   # GET /data_files.json
   def index
-    @data_files = DataFile.all
+    @data_files = DataFile.page(params[:page])
   end
 
   # GET /data_files/1
