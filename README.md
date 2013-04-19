@@ -23,6 +23,9 @@ Environment Setup
 * RVM installation documention: https://rvm.io/rvm/install/
 * Ruby 2 installation: http://blog.arvidandersson.se/2012/10/29/installing-ruby-2-0-with-rvm
 
+### Installing PostgreSQL
+* Install guide: http://wiki.postgresql.org/wiki/Detailed_installation_guides
+
 ### Installing Ruby on Rails
 
 * Latest Guide for installing Ruby 2 and Rails 4: http://railsapps.github.io/installing-rails.html
