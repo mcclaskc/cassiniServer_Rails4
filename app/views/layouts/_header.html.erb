@@ -5,11 +5,14 @@
         <div class="navbar navbar-inverse">
           <div class="navbar-inner">
             <%= link_to "Cassini Spacecraft Viewer", root_path %> |
-            <%= link_to "Events", 'events' %> |
-            <%= link_to "Data Files", 'data_files' %> |
-            <%= link_to "File Types", 'file_types' %> |
-            <%= link_to "Ephemeris", 'ephems' %> |
-            <%= link_to "Bodies", 'bodies' %> 
+            <%= link_to "About" , 'about' %>
+            <% if @admin %> |
+              <%= link_to "Events", 'events' %> |
+              <%= link_to "Data Files", 'data_files' %> |
+              <%= link_to "File Types", 'file_types' %> |
+              <%= link_to "Ephemeris", 'ephems' %> |
+              <%= link_to "Bodies", 'bodies' %> 
+            <% end %>
         </div><!-- /.navbar -->
 
       </div> <!-- /.container -->
