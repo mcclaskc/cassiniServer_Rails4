@@ -6,7 +6,7 @@
           <div class="navbar-inner">
             <%= link_to "Cassini Spacecraft Viewer", root_path %> |
             <%= link_to "About" , 'about' %>
-            <% if @admin %> |
+            <% if is_admin? %> |
               <%= link_to "Events", 'events' %> |
               <%= link_to "Data Files", 'data_files' %> |
               <%= link_to "File Types", 'file_types' %> |
