@@ -12,6 +12,7 @@ Or Upload a File:
     <p>Failed rows: <%= @errors.each { |e| e.id } %>
 <% end %>
 <br/>
+<%= will_paginate @ephems %>
 <table>
   <thead>
     <tr>

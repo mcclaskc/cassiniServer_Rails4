@@ -4,7 +4,7 @@ class EphemsController < ApplicationController
   # GET /ephems
   # GET /ephems.json
   def index
-    @ephems = Ephem.all
+    @ephems = Ephem.page(params[:page])
   end
 
   # GET /ephems/1
