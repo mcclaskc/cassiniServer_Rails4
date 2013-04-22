@@ -13,7 +13,6 @@ System Dependencies
 
 Environment Setup
 -----------------
-
 ### Source Control
 * Git
 * Github Repository: https://github.com/mcclaskc/cassiniServer_Rails4
@@ -27,9 +26,12 @@ Environment Setup
 * Install guide: http://wiki.postgresql.org/wiki/Detailed_installation_guides
 
 ### Installing Ruby on Rails
-
 * Latest Guide for installing Ruby 2 and Rails 4: http://railsapps.github.io/installing-rails.html
 * General Documentation for Rails 4: http://edgeguides.rubyonrails.org/4_0_release_notes.html
+
+##### General Tips
+  * Google, StackOverFlow, and the Rails documentation sites listed above are your friends.
+  * There are some fancy install packages for Windows and Mac out there. I have not found any that install Ruby 2 and Rails 4, which is what this application uses.
 
 ### Running a Local Server 
 Once you have Ruby and Rails installed, navigate to the cloned directory.
@@ -39,5 +41,3 @@ Once you have Ruby and Rails installed, navigate to the cloned directory.
 ```$ rails server```
 * Start the interactive rails console (it's like a Ruby shell, but inside the Rails App's environment)
 ```$ rails console```
-
-
