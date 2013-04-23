@@ -14,11 +14,24 @@ class ApiController < ApplicationController
 		check_datetime
 		if @response[:status] == 200
 			begin
+				ephems = []
+				list = []
+				bodies = Hash[Body.pluck("id", "name")]
 				if @end_datetime
-					@response[:content] = Ephem.where(timestamp: @datetime..@end_datetime).select("body_id, x, y, z,timestamp")
+					ephems = Ephem.where(timestamp: @datetime..@end_datetime).select("body_id, x, y, z,timestamp")
 				else
-					@response[:content] = Ephem.where(timestamp: @datetime).select("body_id, x, y, z,timestamp")
+					ephems = Ephem.where(timestamp: @datetime).select("body_id, x, y, z,timestamp")
 				end
+				ephems.each do |e|
+					list << {
+								timestamp: e.timestamp, 
+								body: bodies[e.body_id],
+								x: e.x,
+								y: e.y,
+								z: e.z
+							}
+				end
+				@response[:content] = {ephems: list}
 			rescue => e
 				@response[:status] = 500
 				@response[:details] = e.message
