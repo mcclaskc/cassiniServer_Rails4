@@ -27,7 +27,8 @@ CassiniServerRails4::Application.routes.draw do
     post 'import_file'
   end
 
-  get 'pages/index'
+  get '/about', to: 'pages#about'
+  get '/viewer', to: 'pages#index'
 
   get 'api/files'
   get 'api/ephem'
