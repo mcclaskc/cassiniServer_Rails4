@@ -27,6 +27,21 @@ class ApiController < ApplicationController
 		respond
 	end
 
+	def bodies
+		prepare_response
+		begin
+			list = []
+			Body.all.select("id", "name").each do |b|
+				list << {id: b.id, name: b.name}
+			end
+			@response[:content] = {bodies: list}
+		rescue => e
+			@response[:status] = 500
+			@response[:details] = e.message
+		end
+		respond
+	end
+
 	def events
 		check_datetime
 		prepare_response

@@ -32,6 +32,7 @@ CassiniServerRails4::Application.routes.draw do
   get 'api/files'
   get 'api/ephem'
   get 'api/events'
+  get 'api/bodies'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
