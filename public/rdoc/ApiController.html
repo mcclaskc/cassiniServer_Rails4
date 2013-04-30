@@ -150,6 +150,9 @@
 
   <div id="description" class="description">
     
+<p>Controls the Web API directory  For documentation on how to use the API
+from the client, go here: TODO LINK</p>
+
   </div><!-- description -->
 
   
@@ -181,12 +184,16 @@
 
         <div class="method-description">
           
-          
+          <p>Handles requests for files.</p>
+
+<p>Requires <a href="http://'date'">params</a>, <a
+href="http://'file_type'">params</a>  Optional <a
+href="http://'end_date'">params</a></p>
           
 
           
           <div class="method-source-code" id="ephem-source">
-            <pre><span class="ruby-comment"># File app/controllers/api_controller.rb, line 12</span>
+            <pre><span class="ruby-comment"># File app/controllers/api_controller.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ephem</span>
         <span class="ruby-identifier">prepare_response</span>
         <span class="ruby-identifier">check_datetime</span>
@@ -238,12 +245,14 @@
 
         <div class="method-description">
           
-          
+          <p>Handles requests for event data.</p>
+
+<p>*Not Yet Implemented, sets response to 404</p>
           
 
           
           <div class="method-source-code" id="events-source">
-            <pre><span class="ruby-comment"># File app/controllers/api_controller.rb, line 43</span>
+            <pre><span class="ruby-comment"># File app/controllers/api_controller.rb, line 58</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">events</span>
         <span class="ruby-identifier">check_datetime</span>
         <span class="ruby-identifier">prepare_response</span>
@@ -272,12 +281,16 @@
 
         <div class="method-description">
           
-          
+          <p>Handles requests for files.</p>
+
+<p>Requires <a href="http://'date'">params</a>, <a
+href="http://'file_type'">params</a>  Optional <a
+href="http://'end_date'">params</a></p>
           
 
           
           <div class="method-source-code" id="files-source">
-            <pre><span class="ruby-comment"># File app/controllers/api_controller.rb, line 2</span>
+            <pre><span class="ruby-comment"># File app/controllers/api_controller.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">files</span>
         <span class="ruby-identifier">prepare_response</span>
         <span class="ruby-identifier">check_file_type</span>
