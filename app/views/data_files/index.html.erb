@@ -1,5 +1,5 @@
 <h1>Listing Data Files</h1>
-<%= link_to 'New Data file', new_data_file_path %>
+<%= link_to ' + New Data file', new_data_file_path, :class => 'btn' %>
 <br/><br/>
 Or Upload a File:
 <%= form_tag({:action => :import_file}, :multipart => true) do %>

@@ -1,5 +1,5 @@
 <h1>Listing Events</h1>
-<%= link_to 'Create New Event', new_event_path %>
+<%= link_to ' + New Event', new_event_path, :class => 'btn' %>
 <br/><br/>
 Or Upload a File:
 <%= form_tag({:action => :import_csv}, :multipart => true) do %>
