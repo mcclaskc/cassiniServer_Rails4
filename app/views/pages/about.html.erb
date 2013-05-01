@@ -1,17 +1,40 @@
 <h1>About</h1>
 <br/>
-<p>Cassini Spacecraft Viewer is an interactive visualization of the Cassini Spacecraft and the actual data that it receives. 
+
+</br>
+
+
+
+<div class="tabbable tabs-left">
+<ul class="nav nav-tabs">
+    <li class="<%= 'active' if params[:tab] == '1' %>"><a href="#tab1" data-toggle="tab">The Project</a></li>
+    <li class="<%= 'active' if params[:tab] == '2' %>"> <a href="#tab2" data-toggle="tab">The Team</a></li>
+    <li class="<%= 'active' if params[:tab] == '3' %>"> <a href="#tab3" data-toggle="tab">The Sponsor</a></li>
+</ul>
+
+<div class="tab-content">
+    
+    <div class="<%= if (params[:tab] == '1' || !params[:tab])then 'tab-pane active'  else 'tab-pane' end%>" id="tab1">
+        <p>Cassini Spacecraft Viewer is an interactive visualization of the Cassini Spacecraft and the actual data that it receives. 
 </p>
-<p class="footer">Created with <a href="http://unity3d.com/unity/" title="Go to unity3d.com">Unity</a></p>
+<p>Created with <a href="http://unity3d.com/unity/" title="Go to unity3d.com">Unity</a></p>
 
 Learn more about Cassini at:
 	<li><%= link_to "Wikipedia", "http://en.wikipedia.org/wiki/Cassini%E2%80%93Huygens" %></li>
 	<li><%= link_to "NASA", "http://www.nasa.gov/mission_pages/cassini/main/index.html" %></li>
-</br>
-<h2>Team Members:</h2>
+    </div>
+
+    <div class="<%= if params[:tab] == '2' then 'tab-pane active'  else 'tab-pane' end%>" id="tab2">
+        <h2>Team Members:</h2>
 <p><b>Don England</b> - Unity<p>
 <p><b>Jeff Hyatt</b> - Unity<p>
 <p><b>Connor Janowiak</b> - Unity, Web API interface<p>
 <p><b>Chris McClaskey</b> - Database, Server, Web API<p>
 <p><b>Jacob Rieger</b> - Unity<p>
 <p><i>You might have noticed the lack of a front-end web developer</i></p>
+    </div>
+    
+    <div class="<%= if params[:tab] == '3' then 'tab-pane active'  else 'tab-pane' end%>" id="tab3">
+        Jim
+    </div>
+</div>
