@@ -38,6 +38,9 @@ gem 'jbuilder', '~> 1.0.1'
 # list pagination
 gem 'will_paginate'
 
+# twiter bootstrap styling
+gem 'bootstrap-sass'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
