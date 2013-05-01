@@ -39,3 +39,6 @@ body {
 	background-color: white;
 	text-align: left;
 }
+.btn:visited { 
+  color:#000; 
+}
