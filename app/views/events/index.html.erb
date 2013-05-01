@@ -27,9 +27,9 @@ Or Upload a File:
       <td><%= event.request %></td>
       <td><%= event.start_scet %></td>
       <td><%= event.end_scet %></td>
-      <td><%= link_to 'Show', event %></td>
-      <td><%= link_to 'Edit', edit_event_path(event) %></td>
-      <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Show', event, :class => 'btn' %></td>
+      <td><%= link_to 'Edit', edit_event_path(event), :class => 'btn' %></td>
+      <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %></td>
     </tr>
     <% end %>
   </tbody>

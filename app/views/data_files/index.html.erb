@@ -27,9 +27,9 @@ Or Upload a File:
       <td><%= data_file.path %></td>
       <td><%= data_file.file_date %></td>
       <td><%= data_file.file_type_id %></td>
-      <td><%= link_to 'Show', data_file %></td>
-      <td><%= link_to 'Edit', edit_data_file_path(data_file) %></td>
-      <td><%= link_to 'Destroy', data_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Show', data_file, :class => 'btn' %></td>
+      <td><%= link_to 'Edit', edit_data_file_path(data_file), :class => 'btn' %></td>
+      <td><%= link_to 'Destroy', data_file, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %></td>
     </tr>
     <% end %>
   </tbody>

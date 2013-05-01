@@ -2,7 +2,7 @@
 <%= link_to 'New Body', new_body_path %>
 </br></br>
 <%= will_paginate @bodies %>
-<table>
+<table cellpadding="10">
   <thead>
     <tr>
       <th>Id</th>
@@ -18,9 +18,9 @@
     <tr>
       <td><%= body.id %></td>
       <td><%= body.name %></td>
-      <td><%= link_to 'Show', body %></td>
-      <td><%= link_to 'Edit', edit_body_path(body) %></td>
-      <td><%= link_to 'Destroy', body, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Show', body, :class => 'btn' %></td>
+      <td><%= link_to 'Edit', edit_body_path(body), :class => 'btn' %></td>
+      <td><%= link_to 'Destroy', body, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %></td>
     </tr>
     <% end %>
   </tbody>

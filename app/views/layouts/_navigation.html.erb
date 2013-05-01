@@ -1,23 +1,23 @@
-	<%= link_to "Home", root_path, :class => 'brand' %>
+	<%= link_to "Cassini Spacecraft Viewer", root_path, :class => 'brand' %>
 
 <ul class="nav">
 	<li>
 		<%= link_to('About', 'about') %>
 	</li>
 	<li>
-		<%= link_to "Events", 'events' %> 
+	    <%= link_to "Bodies", 'bodies' %> 
 	</li>
 	<li>
 	    <%= link_to "Data Files", 'data_files' %> 
 	</li>
     <li>
-	    <%= link_to "File Types", 'file_types' %> 
+	    <%= link_to "Ephemeris", 'ephems' %> 
 	</li>
     <li>
-	    <%= link_to "Ephemeris", 'ephems' %> 
+		<%= link_to "Events", 'events' %> 
 	</li>   
     <li>
-	    <%= link_to "Bodies", 'bodies' %> 
+	    <%= link_to "File Types", 'file_types' %> 
 	</li>
 	<% if false #devise login to to be implemented %>
 	  <% if user_signed_in? %>

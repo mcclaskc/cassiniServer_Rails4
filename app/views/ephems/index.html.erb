@@ -13,7 +13,7 @@ Or Upload a File:
 <% end %>
 <br/>
 <%= will_paginate @ephems %>
-<table>
+<table cellpadding="10">
   <thead>
     <tr>
       <th>X</th>
@@ -35,9 +35,9 @@ Or Upload a File:
       <td><%= ephem.z %></td>
       <td><%= ephem.timestamp %></td>
       <td><%= ephem.body_id %></td>
-      <td><%= link_to 'Show', ephem %></td>
-      <td><%= link_to 'Edit', edit_ephem_path(ephem) %></td>
-      <td><%= link_to 'Destroy', ephem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Show', ephem, :class => 'btn' %></td>
+      <td><%= link_to 'Edit', edit_ephem_path(ephem), :class => 'btn' %></td>
+      <td><%= link_to 'Destroy', ephem, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn' %></td>
     </tr>
     <% end %>
   </tbody>
