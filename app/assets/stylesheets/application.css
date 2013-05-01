@@ -11,6 +11,15 @@
  *= require_self
  *= require_tree .
  */
+body {
+  background: url("https://upload.wikimedia.org/wikipedia/commons/b/b2/Cassini_Saturn_Orbit_Insertion.jpg") no-repeat fixed bottom center;
+  width: 100%;
+  height: 100%;
+  -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
 
 .about,
 .content {
@@ -23,6 +32,7 @@
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  opacity: 0.95;
 }
 
 .about {

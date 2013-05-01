@@ -9,14 +9,14 @@
 
 <div class="tabbable tabs-left">
 <ul class="nav nav-tabs">
-    <li class="<%= 'active' if params[:tab] == '1' %>"><a href="#tab1" data-toggle="tab">The Project</a></li>
+    <li class="<%= 'active' if params[:tab] == '1' or params[:tab].nil? %>"><a href="#tab1" data-toggle="tab">The Project</a></li>
     <li class="<%= 'active' if params[:tab] == '2' %>"> <a href="#tab2" data-toggle="tab">The Team</a></li>
     <li class="<%= 'active' if params[:tab] == '3' %>"> <a href="#tab3" data-toggle="tab">The Sponsor</a></li>
 </ul>
 
 <div class="tab-content">
     
-    <div class="<%= if (params[:tab] == '1' || !params[:tab])then 'tab-pane active'  else 'tab-pane' end%>" id="tab1">
+    <div class="<%= if (params[:tab] == '1' || params[:tab].nil?)then 'tab-pane active'  else 'tab-pane' end%>" id="tab1">
         <%= render 'project' %>
     </div>
 
