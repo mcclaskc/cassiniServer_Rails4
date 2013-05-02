@@ -1,8 +1,23 @@
 Cassini Spacecraft Viewer is an interactive visualization of the Cassini Spacecraft and the actual data that it receives in the Saturnian system. It was created by a team of computer science students for their senior project at the University of Colorado-Boulder.
 </p>
 Learn more about Cassini at:
-	<li><%= link_to "Wikipedia", "http://en.wikipedia.org/wiki/Cassini%E2%80%93Huygens"%></li>
-	<li><%= link_to "NASA", "http://www.nasa.gov/mission_pages/cassini/main/index.html"%></li>
+	<li>
+		<%= link_to "http://en.wikipedia.org/wiki/Cassini%E2%80%93Huygens" do %>
+			Wikipedia <%= image_tag "external_link_icon.gif" %>
+		<% end %>
+	</li>
+	<li>
+		<%= link_to "http://www.nasa.gov/mission_pages/cassini/main/index.html" do %>
+			NASA <%= image_tag "external_link_icon.gif" %>
+		<% end %>
+	</li>
+	<li>
+		<%= link_to "http://lasp.colorado.edu/cassini/" do %>
+			LASP <%= image_tag "external_link_icon.gif" %>
+		<% end %>
+	</li>
 <hr>
-
-<p>Created with <a href="http://unity3d.com/unity/" title="Go to unity3d.com">Unity3D Game Engine</a></p>
+Created with 
+<%= link_to "http://unity3d.com/unity/" do %>
+	Unity3D Game Engine <%= image_tag "external_link_icon.gif" %>
+<% end %>
