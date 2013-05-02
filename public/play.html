@@ -15,8 +15,8 @@
 		<script type="text/javascript">
 		<!--
 			var config = {
-				width: 960, 
-				height: 600,
+				width: window.screen.availWidth * 0.9,//1920, 
+				height: window.screen.availHeight * 0.9,//1080,
 				params: { enableDebugging:"0" }
 				
 			};
@@ -105,8 +105,8 @@
 			cursor: default;
 			height: 100%;
 			width: 100%;
-			/* border so I can see placement during development in Linux
-			border-color: red;
+			 /*border so I can see placement during development in Linux*/
+			/*border-color: red;
 		  	border-style: dashed;*/
 		}
 		-->
@@ -126,7 +126,6 @@
 					</a>
 				</div>
 			</div>
-			<p>Right click on the player to go Full Screen.</p>
 		</div>
 	</body>
 </html>
