@@ -13,21 +13,21 @@ class ApiController < ApplicationController
 		check_date
 			if @response[:status] == 200
 				begin
-					events = []
+					files = []
 					list = []
 					bodies = Hash[Body.pluck("id"), "name")]
 					if @end_date
-						events = DataFile.where(file_date: @date..@end_date, file_type_id: @file_type_id).select("body_id, x, y, z, file_date")
+						files = DataFile.where(file_date: @date..@end_date, file_type_id: @file_type_id).select("body_id, file_date, path")
 					else
-						events = DataFile.where(file_date: @date, file_type_id: @file_type_id).select("body_id, x, y, z, file_date")
+						files = DataFile.where(file_date: @date, file_type_id: @file_type_id).select("body_id, file_date, path")
 					end
-					events.each do |e|
+					files.each do |f|
 						list << {
-								timestamp: e.timestamp, 
-								body: bodies[e.body_id],
-								x: e.x,
-								y: e.y,
-								z: e.z
+								timestamp: f.timestamp, 
+								body: bodies[f.body_id],
+								x: f.x,
+								y: f.y,
+								z: f.z
 							}
 					end
 					@response[:content] = {events: list}
