@@ -24,9 +24,9 @@ class ApiController < ApplicationController
 					end
 					files.each do |f|
 						list << {
-								file_date: f.timestamp, 
+								file_date: f.file_date, 
 								body: bodies[f.body_id],
-								file_type: file_types[f.file_type_id]
+								file_type: file_types[f.file_type_id],
 								path: f.path
 							}
 					end
