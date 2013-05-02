@@ -1,3 +1,3 @@
 class Body < ActiveRecord::Base
-	has_many :ephems, :data_files
+	#has_many :ephems, :data_files
 end
