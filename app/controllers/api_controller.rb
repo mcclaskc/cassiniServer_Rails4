@@ -15,22 +15,22 @@ class ApiController < ApplicationController
 				begin
 					files = []
 					list = []
-					bodies = Hash[Body.pluck("id"), "name")]
+					bodies = Hash[Body.pluck("id", "name")]
+					file_types = Hash[FileType.pluck("id", "title")]
 					if @end_date
-						files = DataFile.where(file_date: @date..@end_date, file_type_id: @file_type_id).select("body_id, file_date, path")
+						files = DataFile.where(file_date: @date..@end_date, file_type_id: @file_type_id).select("body_id, file_type_id, file_date, path")
 					else
-						files = DataFile.where(file_date: @date, file_type_id: @file_type_id).select("body_id, file_date, path")
+						files = DataFile.where(file_date: @date, file_type_id: @file_type_id).select("body_id, file_type_id, file_date, path")
 					end
 					files.each do |f|
 						list << {
-								timestamp: f.timestamp, 
+								file_date: f.timestamp, 
 								body: bodies[f.body_id],
-								x: f.x,
-								y: f.y,
-								z: f.z
+								file_type: file_types[f.file_type_id]
+								path: f.path
 							}
 					end
-					@response[:content] = {events: list}
+					@response[:content] = {files: list}
 				rescue => e
 					@response[:status] = 500
 					@response[:details] = e.message
