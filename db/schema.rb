@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130416164125) do
+ActiveRecord::Schema.define(version: 20130502155706) do
 
   create_table "bodies", force: true do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20130416164125) do
     t.integer  "file_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "body_id"
   end
 
   create_table "ephems", force: true do |t|
