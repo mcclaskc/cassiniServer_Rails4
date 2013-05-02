@@ -45,10 +45,6 @@ body {
   color:#000; 
 }
 
-a:visited {
-  color: red;
-}
-
 .btn-xtralarge {
     padding: 18px 28px;
     font-size: 40px;
