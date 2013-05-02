@@ -11,6 +11,13 @@ class DataFile < ActiveRecord::Base
 				break
 			end
 		end
+		body_id = nil
+		Body.pluck(:name, :id).each do |b|
+			if title.downcase.include? b[0].downcase
+				body_id = b[1]
+				break
+			end
+		end
 		#uvisFOV_titan_2009-JUN-23.dat
 		string_date = ""
 		under_count = 0
@@ -29,6 +36,6 @@ class DataFile < ActiveRecord::Base
 		path = File.join('public/files/', title)
 		File.open(path, "wb") { |f| f.write(data_file.read) }
 		
-		DataFile.new(path: 'files/'+title, file_date: file_date, file_type_id: file_type_id).save!
+		DataFile.new(path: 'files/'+title, file_date: file_date, file_type_id: file_type_id, body_id: body_id).save!
 	end
 end
