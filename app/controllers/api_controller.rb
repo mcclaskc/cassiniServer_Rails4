@@ -12,7 +12,29 @@ class ApiController < ApplicationController
 		check_file_type
 		check_date
 			if @response[:status] == 200
-				@response[:content] = DataFile.where(file_date: @date, file_type_id: @file_type_id)
+				begin
+					events = []
+					list = []
+					bodies = Hash[Body.pluck("id"), "name")]
+					if @end_date
+						events = DataFile.where(file_date: @date..@end_date, file_type_id: @file_type_id).select("body_id, x, y, z, file_date")
+					else
+						events = DataFile.where(file_date: @date, file_type_id: @file_type_id).select("body_id, x, y, z, file_date")
+					end
+					events.each do |e|
+						list << {
+								timestamp: e.timestamp, 
+								body: bodies[e.body_id],
+								x: e.x,
+								y: e.y,
+								z: e.z
+							}
+					end
+					@response[:content] = {events: list}
+				rescue => e
+					@response[:status] = 500
+					@response[:details] = e.message
+				end
 			end	
 		respond
 	end
