@@ -1,5 +1,5 @@
-== Installation and Setup
-
+Installation and Setup
+======================
 System Dependencies
 -----------------
 * RVM
