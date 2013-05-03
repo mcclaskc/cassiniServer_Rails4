@@ -2,10 +2,12 @@ require 'csv'
 
 class Ephem < ActiveRecord::Base
 
-	# (-53.3, 0.0, 63.2) 6/22/2009 12:00:00 AM
+	
 
 	def self.parse_and_create(file)
+		# example csv line: (-53.3, 0.0, 63.2) 6/22/2009 12:00:00 AM
 
+		#searches for a body name in the filename (ie TITAN), if it matches one of the known bodies, it remembers the id
 		file_name = file.original_filename
 		body_id = nil
 		Body.pluck(:name, :id).each do |b|
@@ -14,8 +16,13 @@ class Ephem < ActiveRecord::Base
 				break
 			end
 		end
-		file = file.read.gsub(/[(),]/, "").gsub(/[\/: ]/, ",")
 
+		#some hacky character replacement going on, making it easier to parse manually
+		#a row ends up looking like this: 86.6, -9.4, 164.7, 6, 22, 2009, 11, 59, 00, PM
+		file = file.read.gsub(/[(),]/, "").gsub(/[\/: ]/, ",")
+		
+		#parses the file.  each row will be made into a new Ephem record.  If an error occurs during a row parse, the row id 
+		# is remembered and reported. 
 		csv = CSV.parse(file)
 		errors = []
 	    csv.each_with_index do |r, i|

@@ -194,6 +194,13 @@
                         <span class="ruby-keyword">break</span>
                 <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">body_id</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-constant">Body</span>.<span class="ruby-identifier">pluck</span>(<span class="ruby-value">:name</span>, <span class="ruby-value">:id</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">title</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">b</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">downcase</span>
+                        <span class="ruby-identifier">body_id</span> = <span class="ruby-identifier">b</span>[<span class="ruby-value">1</span>]
+                        <span class="ruby-keyword">break</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
         <span class="ruby-comment">#uvisFOV_titan_2009-JUN-23.dat</span>
         <span class="ruby-identifier">string_date</span> = <span class="ruby-string">&quot;&quot;</span>
         <span class="ruby-identifier">under_count</span> = <span class="ruby-value">0</span>
@@ -212,7 +219,7 @@
         <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;public/files/&#39;</span>, <span class="ruby-identifier">title</span>)
         <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">data_file</span>.<span class="ruby-identifier">read</span>) }
         
-        <span class="ruby-constant">DataFile</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;files/&#39;</span><span class="ruby-operator">+</span><span class="ruby-identifier">title</span>, <span class="ruby-identifier">file_date</span><span class="ruby-operator">:</span> <span class="ruby-identifier">file_date</span>, <span class="ruby-identifier">file_type_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">file_type_id</span>).<span class="ruby-identifier">save!</span>
+        <span class="ruby-constant">DataFile</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;files/&#39;</span><span class="ruby-operator">+</span><span class="ruby-identifier">title</span>, <span class="ruby-identifier">file_date</span><span class="ruby-operator">:</span> <span class="ruby-identifier">file_date</span>, <span class="ruby-identifier">file_type_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">file_type_id</span>, <span class="ruby-identifier">body_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">body_id</span>).<span class="ruby-identifier">save!</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- import_and_create-source -->
           

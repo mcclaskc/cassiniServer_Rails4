@@ -186,14 +186,12 @@ from the client, go here: TODO LINK</p>
           
           <p>Handles requests for files.</p>
 
-<p>Requires <a href="http://'date'">params</a>, <a
-href="http://'file_type'">params</a>  Optional <a
-href="http://'end_date'">params</a></p>
+<p>Required url params: datetime, file_type. Optional params: end_datetime.</p>
           
 
           
           <div class="method-source-code" id="ephem-source">
-            <pre><span class="ruby-comment"># File app/controllers/api_controller.rb, line 24</span>
+            <pre><span class="ruby-comment"># File app/controllers/api_controller.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ephem</span>
         <span class="ruby-identifier">prepare_response</span>
         <span class="ruby-identifier">check_datetime</span>
@@ -252,10 +250,10 @@ href="http://'end_date'">params</a></p>
 
           
           <div class="method-source-code" id="events-source">
-            <pre><span class="ruby-comment"># File app/controllers/api_controller.rb, line 58</span>
+            <pre><span class="ruby-comment"># File app/controllers/api_controller.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">events</span>
-        <span class="ruby-identifier">check_datetime</span>
         <span class="ruby-identifier">prepare_response</span>
+        <span class="ruby-identifier">check_datetime</span>
         <span class="ruby-ivar">@response</span>[<span class="ruby-value">:status</span>] = <span class="ruby-value">404</span>
         <span class="ruby-ivar">@response</span>[<span class="ruby-value">:details</span>] = <span class="ruby-string">&quot;Invalid Request&quot;</span>
         <span class="ruby-identifier">respond</span>
@@ -283,9 +281,7 @@ href="http://'end_date'">params</a></p>
           
           <p>Handles requests for files.</p>
 
-<p>Requires <a href="http://'date'">params</a>, <a
-href="http://'file_type'">params</a>  Optional <a
-href="http://'end_date'">params</a></p>
+<p>Required url params: date, file_type.  Optional url params: end_date.</p>
           
 
           
@@ -296,7 +292,29 @@ href="http://'end_date'">params</a></p>
         <span class="ruby-identifier">check_file_type</span>
         <span class="ruby-identifier">check_date</span>
                 <span class="ruby-keyword">if</span> <span class="ruby-ivar">@response</span>[<span class="ruby-value">:status</span>] <span class="ruby-operator">==</span> <span class="ruby-value">200</span>
-                        <span class="ruby-ivar">@response</span>[<span class="ruby-value">:content</span>] = <span class="ruby-constant">DataFile</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">file_date</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@date</span>, <span class="ruby-identifier">file_type_id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@file_type_id</span>)
+                        <span class="ruby-keyword">begin</span>
+                                <span class="ruby-identifier">files</span> = []
+                                <span class="ruby-identifier">list</span> = []
+                                <span class="ruby-identifier">bodies</span> = <span class="ruby-constant">Hash</span>[<span class="ruby-constant">Body</span>.<span class="ruby-identifier">pluck</span>(<span class="ruby-string">&quot;id&quot;</span>, <span class="ruby-string">&quot;name&quot;</span>)]
+                                <span class="ruby-identifier">file_types</span> = <span class="ruby-constant">Hash</span>[<span class="ruby-constant">FileType</span>.<span class="ruby-identifier">pluck</span>(<span class="ruby-string">&quot;id&quot;</span>, <span class="ruby-string">&quot;title&quot;</span>)]
+                                <span class="ruby-keyword">if</span> <span class="ruby-ivar">@end_date</span>
+                                        <span class="ruby-identifier">files</span> = <span class="ruby-constant">DataFile</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">file_date</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@date</span><span class="ruby-operator">..</span><span class="ruby-ivar">@end_date</span>, <span class="ruby-identifier">file_type_id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@file_type_id</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;body_id, file_type_id, file_date, path&quot;</span>)
+                                <span class="ruby-keyword">else</span>
+                                        <span class="ruby-identifier">files</span> = <span class="ruby-constant">DataFile</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">file_date</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@date</span>, <span class="ruby-identifier">file_type_id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@file_type_id</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;body_id, file_type_id, file_date, path&quot;</span>)
+                                <span class="ruby-keyword">end</span>
+                                <span class="ruby-identifier">files</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-identifier">list</span> <span class="ruby-operator">&lt;&lt;</span> {
+                                                        <span class="ruby-identifier">file_date</span><span class="ruby-operator">:</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">file_date</span>, 
+                                                        <span class="ruby-identifier">body</span><span class="ruby-operator">:</span> <span class="ruby-identifier">bodies</span>[<span class="ruby-identifier">f</span>.<span class="ruby-identifier">body_id</span>],
+                                                        <span class="ruby-identifier">file_type</span><span class="ruby-operator">:</span> <span class="ruby-identifier">file_types</span>[<span class="ruby-identifier">f</span>.<span class="ruby-identifier">file_type_id</span>],
+                                                        <span class="ruby-identifier">path</span><span class="ruby-operator">:</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">path</span>
+                                                }
+                                <span class="ruby-keyword">end</span>
+                                <span class="ruby-ivar">@response</span>[<span class="ruby-value">:content</span>] = {<span class="ruby-identifier">files</span><span class="ruby-operator">:</span> <span class="ruby-identifier">list</span>}
+                        <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+                                <span class="ruby-ivar">@response</span>[<span class="ruby-value">:status</span>] = <span class="ruby-value">500</span>
+                                <span class="ruby-ivar">@response</span>[<span class="ruby-value">:details</span>] = <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>
+                        <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span>  
         <span class="ruby-identifier">respond</span>
 <span class="ruby-keyword">end</span></pre>

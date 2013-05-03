@@ -61,10 +61,10 @@ class DataFilesController < ApplicationController
     end
   end
 
+  ##
   # Page to which the upload csv form is sent. It checks to see if the file is there, then 
   # calls Event.parse_and_create(file).  Errors are caught and rendered after redirected 
-  # back to the Events index page. 
-  # # Chris McClaskey - Cassini Senior Project Team  
+  # back to the Events index page.   
   def import_file
     begin
       file = params[:file]

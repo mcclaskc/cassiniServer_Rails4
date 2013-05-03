@@ -5,8 +5,8 @@ class ApiController < ApplicationController
 
 	##
 	# Handles requests for files.  
-	# Requires params['date'], params['file_type'] 
-	# Optional params['end_date']
+	# Required url params: date, file_type. 
+	# Optional url params: end_date.
 	def files
 		prepare_response
 		check_file_type
@@ -41,8 +41,8 @@ class ApiController < ApplicationController
 
 	##
 	# Handles requests for files.  
-	# Requires params['date'], params['file_type'] 
-	# Optional params['end_date']
+	# Required url params: datetime, file_type.
+	# Optional params: end_datetime.
 	def ephem
 		prepare_response
 		check_datetime
@@ -136,7 +136,7 @@ class ApiController < ApplicationController
 
 	##
 	# Ensures the presence of validity of file_type, then sets it's 
-	# corresponding id to @file_type_id
+	# corresponding id to @file_type_id.
 	# This is used by the files method
 	def check_file_type
 		if file_type = params['file_type']

@@ -1,3 +1,5 @@
+##
+#Blank methods that manage the informational pages	
 class PagesController < ApplicationController
 	def index
 	end

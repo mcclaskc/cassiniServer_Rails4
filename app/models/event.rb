@@ -3,10 +3,8 @@ require 'csv'
 class Event < ActiveRecord::Base
 	
 	# Parses a csv file and creates an Event for each row.
-	# * It is very hacky and inflexible at the moment. 
-	# * I just made sure I was able to input the txt file 
-	# * we recieved.  It is easily alterable though.
-	# # Chris McClaskey - Cassini Senior Project Team
+	# I just made sure I was able to input the txt file 
+	# we recieved.  It is easily alterable though.
 	def self.parse_and_create(csv_file)
 		csv = CSV.parse(csv_file.read)
     csv.each do |r|

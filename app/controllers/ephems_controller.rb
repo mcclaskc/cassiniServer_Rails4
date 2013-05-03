@@ -61,6 +61,10 @@ class EphemsController < ApplicationController
     end
   end
 
+    ##
+  # Page to which the upload csv form is sent. It checks to see if the file is there, then 
+  # calls Event.parse_and_create(file).  Errors are caught and rendered after redirected 
+  # back to the ephems index page. 
   def import_csv
     begin
       file = params[:csv]
