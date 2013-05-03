@@ -54,5 +54,9 @@ This will place the documentation in ```doc/app/```, and can be accessed locally
 The comments I have made around classes and methods should be good templates
 for what rdoc wants.
 
+Deployment
+----------
+I am currently deploying to my personal Heroku account.  I'm assuming LASP will want to handle this themselves.
+
 
 

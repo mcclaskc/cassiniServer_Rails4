@@ -4,9 +4,9 @@ Web application half of the [cassini-spacecraft-viewer project](https://github.c
 
 Live Site: [http://cassini-spacecraft-viewer.herokuapp.com/](http://cassini-spacecraft-viewer.herokuapp.com/)
 
-App installation and setup: [README.rdoc](README.md)
+Web App Documentation (installation, testing, etc): [README.rdoc](README.md)
 
-Web API documentation: [WebAPI.md](WebAPI.md)
+Web API documentation (How the Unity code requests data): [WebAPI.md](WebAPI.md)
 
 TODO List and Possible Future Features: [TODO.md](TODO.md) 
 
