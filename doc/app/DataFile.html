@@ -146,6 +146,10 @@
 
   <div id="description" class="description">
     
+<p><a href="DataFile.html">DataFile</a> is a model of any binary files that
+the client might request.  DataFiles have a date, body, and the download
+path. See schema.rb for more info.</p>
+
   </div><!-- description -->
 
   
@@ -177,16 +181,20 @@
 
         <div class="method-description">
           
-          
+          <p>Process of importing a data file and creating a new <a
+href="DataFile.html">DataFile</a> in the database.  Reuired param:
+data_file - is expected to be of type ActionDispatch::Http::UploadedFile</p>
           
 
           
           <div class="method-source-code" id="import_and_create-source">
-            <pre><span class="ruby-comment"># File app/models/data_file.rb, line 3</span>
+            <pre><span class="ruby-comment"># File app/models/data_file.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">import_and_create</span>(<span class="ruby-identifier">data_file</span>)
-        <span class="ruby-comment">#data_file is expected to be of type ActionDispatch::Http::UploadedFile</span>
+        <span class="ruby-comment">#example filename: uvisFOV_titan_2009-JUN-23.dat</span>
 
         <span class="ruby-identifier">title</span> = <span class="ruby-identifier">data_file</span>.<span class="ruby-identifier">original_filename</span>
+        
+        <span class="ruby-comment">#searches for a filetype name in the filename (ie UVIS), if it matches one of the known filetypes, it remembers the id</span>
         <span class="ruby-identifier">file_type_id</span> = <span class="ruby-keyword">nil</span>
         <span class="ruby-constant">FileType</span>.<span class="ruby-identifier">pluck</span>(<span class="ruby-value">:title</span>, <span class="ruby-value">:id</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
                 <span class="ruby-keyword">if</span> <span class="ruby-identifier">title</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">f</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">downcase</span>
@@ -194,6 +202,8 @@
                         <span class="ruby-keyword">break</span>
                 <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">end</span>
+
+        <span class="ruby-comment">#same as above, but for the body (ie TITAN)</span>
         <span class="ruby-identifier">body_id</span> = <span class="ruby-keyword">nil</span>
         <span class="ruby-constant">Body</span>.<span class="ruby-identifier">pluck</span>(<span class="ruby-value">:name</span>, <span class="ruby-value">:id</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
                 <span class="ruby-keyword">if</span> <span class="ruby-identifier">title</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">b</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">downcase</span>
@@ -201,7 +211,8 @@
                         <span class="ruby-keyword">break</span>
                 <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">end</span>
-        <span class="ruby-comment">#uvisFOV_titan_2009-JUN-23.dat</span>
+        
+        <span class="ruby-comment"># parsing the name to extract the date.  assumes the format matches the example above</span>
         <span class="ruby-identifier">string_date</span> = <span class="ruby-string">&quot;&quot;</span>
         <span class="ruby-identifier">under_count</span> = <span class="ruby-value">0</span>
         <span class="ruby-identifier">title</span>.<span class="ruby-identifier">each_char</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
@@ -213,12 +224,15 @@
                         <span class="ruby-identifier">under_count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
                 <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">end</span>
-        
         <span class="ruby-identifier">file_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">string_date</span>)
 
+        <span class="ruby-comment"># create the file path - right now its being stored in public/files/ on the server, but </span>
+        <span class="ruby-comment"># heroku, the cloud hosting service, has issues remember written files like this.  </span>
+        <span class="ruby-comment"># Need to do amazon hosting or something.</span>
         <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;public/files/&#39;</span>, <span class="ruby-identifier">title</span>)
         <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-string">&quot;wb&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">data_file</span>.<span class="ruby-identifier">read</span>) }
         
+        <span class="ruby-comment">#Finally, create the new DataFile record.</span>
         <span class="ruby-constant">DataFile</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;files/&#39;</span><span class="ruby-operator">+</span><span class="ruby-identifier">title</span>, <span class="ruby-identifier">file_date</span><span class="ruby-operator">:</span> <span class="ruby-identifier">file_date</span>, <span class="ruby-identifier">file_type_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">file_type_id</span>, <span class="ruby-identifier">body_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">body_id</span>).<span class="ruby-identifier">save!</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- import_and_create-source -->

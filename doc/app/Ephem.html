@@ -177,14 +177,16 @@
 
         <div class="method-description">
           
-          <p>(-53.3, 0.0, 63.2) 6/22/2009 12:00:00 AM</p>
+          
           
 
           
           <div class="method-source-code" id="parse_and_create-source">
             <pre><span class="ruby-comment"># File app/models/ephem.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse_and_create</span>(<span class="ruby-identifier">file</span>)
+        <span class="ruby-comment"># example csv line: (-53.3, 0.0, 63.2) 6/22/2009 12:00:00 AM</span>
 
+        <span class="ruby-comment">#searches for a body name in the filename (ie TITAN), if it matches one of the known bodies, it remembers the id</span>
         <span class="ruby-identifier">file_name</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">original_filename</span>
         <span class="ruby-identifier">body_id</span> = <span class="ruby-keyword">nil</span>
         <span class="ruby-constant">Body</span>.<span class="ruby-identifier">pluck</span>(<span class="ruby-value">:name</span>, <span class="ruby-value">:id</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
@@ -193,8 +195,13 @@
                         <span class="ruby-keyword">break</span>
                 <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">end</span>
-        <span class="ruby-identifier">file</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/[(),]/</span>, <span class="ruby-string">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/[\/: ]/</span>, <span class="ruby-string">&quot;,&quot;</span>)
 
+        <span class="ruby-comment">#some hacky character replacement going on, making it easier to parse manually</span>
+        <span class="ruby-comment">#a row ends up looking like this: 86.6, -9.4, 164.7, 6, 22, 2009, 11, 59, 00, PM</span>
+        <span class="ruby-identifier">file</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/[(),]/</span>, <span class="ruby-string">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/[\/: ]/</span>, <span class="ruby-string">&quot;,&quot;</span>)
+        
+        <span class="ruby-comment">#parses the file.  each row will be made into a new Ephem record.  If an error occurs during a row parse, the row id </span>
+        <span class="ruby-comment"># is remembered and reported. </span>
         <span class="ruby-identifier">csv</span> = <span class="ruby-constant">CSV</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">file</span>)
         <span class="ruby-identifier">errors</span> = []
     <span class="ruby-identifier">csv</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">r</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>

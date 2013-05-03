@@ -178,21 +178,13 @@
         <div class="method-description">
           
           <p>Parses a csv file and creates an <a href="Event.html">Event</a> for each
-row.</p>
-<ul><li>
-<p>It is very hacky and inflexible at the moment.</p>
-</li><li>
-<p>I just made sure I was able to input the txt file</p>
-</li><li>
-<p>we recieved.  It is easily alterable though.</p>
-</li></ul>
-
-<p># Chris McClaskey - Cassini Senior Project Team</p>
+row. I just made sure I was able to input the txt file  we recieved.  It is
+easily alterable though.</p>
           
 
           
           <div class="method-source-code" id="parse_and_create-source">
-            <pre><span class="ruby-comment"># File app/models/event.rb, line 10</span>
+            <pre><span class="ruby-comment"># File app/models/event.rb, line 8</span>
     <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse_and_create</span>(<span class="ruby-identifier">csv_file</span>)
             <span class="ruby-identifier">csv</span> = <span class="ruby-constant">CSV</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">csv_file</span>.<span class="ruby-identifier">read</span>)
 <span class="ruby-identifier">csv</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">r</span><span class="ruby-operator">|</span>

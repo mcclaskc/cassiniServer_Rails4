@@ -294,12 +294,16 @@
 
         <div class="method-description">
           
-          
+          <p>Page to which the upload csv form is sent. It checks to see if the file is
+there, then  calls <a
+href="Event.html#method-c-parse_and_create">Event.parse_and_create</a>. 
+Errors are caught and rendered after redirected  back to the ephems index
+page.</p>
           
 
           
           <div class="method-source-code" id="import_csv-source">
-            <pre><span class="ruby-comment"># File app/controllers/ephems_controller.rb, line 64</span>
+            <pre><span class="ruby-comment"># File app/controllers/ephems_controller.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">import_csv</span>
   <span class="ruby-keyword">begin</span>
     <span class="ruby-identifier">file</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:csv</span>]
