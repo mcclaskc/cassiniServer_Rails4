@@ -78,8 +78,8 @@ class ApiController < ApplicationController
 	# Handles requests for event data.  
 	# *Not Yet Implemented, sets response to 404
 	def events
-		check_datetime
 		prepare_response
+		check_datetime
 		@response[:status] = 404
 		@response[:details] = "Invalid Request"
 		respond
