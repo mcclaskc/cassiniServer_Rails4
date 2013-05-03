@@ -1,28 +1,58 @@
-== README
+== Installation and Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+System Dependencies
+-----------------
+* RVM
+* Ruby 2.0.0p0 
+* PostgreSQL 
 
-Things you may want to cover:
+Environment Setup
+-----------------
+### Source Control
+* Git
+* Github Repository: https://github.com/mcclaskc/cassiniServer_Rails4
+* Github cloning instructions: https://help.github.com/articles/fork-a-repo
 
-* Ruby version
+### Installing RVM and Ruby
+* RVM installation documention: https://rvm.io/rvm/install/
+* Ruby 2 installation: http://blog.arvidandersson.se/2012/10/29/installing-ruby-2-0-with-rvm
 
-* System dependencies
+### Installing PostgreSQL
+* Install guide: http://wiki.postgresql.org/wiki/Detailed_installation_guides
 
-* Configuration
+### Installing Ruby on Rails
+* Latest Guide for installing Ruby 2 and Rails 4: http://railsapps.github.io/installing-rails.html
+* General Documentation for Rails 4: http://edgeguides.rubyonrails.org/4_0_release_notes.html
 
-* Database creation
+##### General Tips
+  * Google, StackOverFlow, and the Rails documentation sites listed above are your friends.
+  * There are some fancy install packages for Windows and Mac out there. I have not found any that install Ruby 2 and Rails 4, which is what this application uses.
 
-* Database initialization
+### Running a Local Server 
+Once you have Ruby and Rails installed, navigate to the cloned directory.
+* Install the necessary gems (ruby libraries) for the project 
+```$ bundle install```
+* Start the server.  This starts a server on localhost:3000 (default
+```$ rails server```
+* Start the interactive rails console (it's like a Ruby shell, but inside the Rails App's environment)
 
-* How to run the test suite
+### Running the Rails Console
+It's a ruby shell, but is inside your app's scope and thus has access to your libraries, models, lib, etc.  It's a handy way to test out new code manually or access your development database via Rails instead of SQL.
+```$ rails console```
 
-* Services (job queues, cache servers, search engines, etc.)
+Testing
+-------
+The test files are found in ```/test```
+To run the test suite, run ```$ rake test```
+Rails testing documentation: http://guides.rubyonrails.org/testing.html
 
-* Deployment instructions
+Documentation
+-------------
+RDOC is JAVADOC for Ruby. 
+To generate or update your rdoc for rails: ```$rake doc:app```
+This will place the documentation in ```doc/app/```, and can be accessed locally.
+The comments I have made around classes and methods should be good templates
+for what rdoc wants.
 
-* ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

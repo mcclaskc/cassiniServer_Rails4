@@ -4,10 +4,10 @@ Web application half of the [cassini-spacecraft-viewer project](https://github.c
 
 Live Site: [http://cassini-spacecraft-viewer.herokuapp.com/](http://cassini-spacecraft-viewer.herokuapp.com/)
 
-App installation and setup
+App installation and setup: [README.rdoc](README.md)
 
-Web API documentation
+Web API documentation: [WebAPI.md](WebAPI.md)
 
-TODO List and Possible Future Features 
+TODO List and Possible Future Features: [TODO.md](TODO.md) 
 
 
