@@ -1,13 +1,25 @@
 cassiniServer_Rails4
 ====================
 Web application half of the [cassini-spacecraft-viewer project](https://github.com/mcclaskc/Cassini-Spacecraft-Viewer)
+* **Live Site:** [http://cassini-spacecraft-viewer.herokuapp.com/](http://cassini-spacecraft-viewer.herokuapp.com/)
+* **Web API** documentation (How the Unity code requests data): [WebAPI.md](WebAPI.md)
+* **TODO List** and Possible Future Features: [TODO.md](TODO.md) 
 
-**Live Site:** [http://cassini-spacecraft-viewer.herokuapp.com/](http://cassini-spacecraft-viewer.herokuapp.com/)
-
-**Web API** documentation (How the Unity code requests data): [WebAPI.md](WebAPI.md)
-
-**TODO List** and Possible Future Features: [TODO.md](TODO.md) 
-
+Contents of this README
+-----------------------
+* [System Dependencies](https://github.com/mcclaskc/cassiniServer_Rails4#system-dependencies)
+* [Environment Setup](https://github.com/mcclaskc/cassiniServer_Rails4#environment-setup)
+ * [Source Control](https://github.com/mcclaskc/cassiniServer_Rails4#source-control)
+ * [Installing RVM and Ruby](https://github.com/mcclaskc/cassiniServer_Rails4#installing-rvm-and-ruby)
+ * [Installing PostgreSQL](https://github.com/mcclaskc/cassiniServer_Rails4#installing-postgresql)
+ * [Installing Rails](https://github.com/mcclaskc/cassiniServer_Rails4#installing-ruby-on-rails)
+  * [General Tips](https://github.com/mcclaskc/cassiniServer_Rails4#general-tips)
+ * [Running a Local Server](https://github.com/mcclaskc/cassiniServer_Rails4#running-a-local-server)
+ * [Running the Rails console](https://github.com/mcclaskc/cassiniServer_Rails4#running-the-rails-console)
+* [Adding the Unity Web Player to Rails](https://github.com/mcclaskc/cassiniServer_Rails4#adding-the-unity-web-player-object-to-rails)
+* [Testing](https://github.com/mcclaskc/cassiniServer_Rails4#testing)
+* [Code Documentation](https://github.com/mcclaskc/cassiniServer_Rails4#documentation)
+* [Deployment](https://github.com/mcclaskc/cassiniServer_Rails4#deployment)
 
 System Dependencies
 -----------------
