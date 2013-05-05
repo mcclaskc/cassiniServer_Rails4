@@ -84,7 +84,12 @@ Rails testing documentation: http://guides.rubyonrails.org/testing.html
 
 Documentation
 -------------
-The code documentation can be accessed locally with a browser (not on the local server, literally local directory), in the App's directory at ```doc/app/```.  It is created with RDOC, which is like Javadoc but for Ruby. 
+The code documentation can be accessed in your local directory with a browser (not the local Rails server), in the App's directory at ```doc/app/```. 
+For example in mine:
+```
+file:///home/chris/cassiniServer_Rails4/doc/app/index.html
+```
+It is created with RDOC, which is like Javadoc but for Ruby. 
 To generate or update your rdoc for rails: 
 ```$rake doc:app```
 This will automatically place the documentation in ```doc/app/```, and can be accessed locally with a browser.
@@ -93,7 +98,7 @@ for what rdoc wants.
 
 Deployment
 ----------
-I am currently deploying to my personal Heroku account.  I'm assuming LASP will want to handle this themselves.
+I am currently deploying to my personal [Heroku](https://www.heroku.com/) account.  I'm assuming LASP will want to handle this themselves.
 
 
 
