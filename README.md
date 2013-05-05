@@ -17,6 +17,7 @@ System Dependencies
 
 Environment Setup
 -----------------
+#### This is not very pedantic.  I have installed Rails on several machines of my own and helped with others.  Each installation experience has been a little different, especially depending on what OS your using.  
 ### Source Control
 * Git
 * Github Repository: https://github.com/mcclaskc/cassiniServer_Rails4
@@ -48,6 +49,18 @@ Once you have Ruby and Rails installed, navigate to the cloned directory.
 ### Running the Rails Console
 It's a ruby shell, but is inside your app's scope and thus has access to your libraries, models, lib, etc.  It's a handy way to test out new code manually or access your development database via Rails instead of SQL.
 ```$ rails console```
+
+Adding the Unity Web Player object to Rails
+-------------------------------------------
+* The Unity Web Player requires it's own javascripts and css, naturally.  However, when I tried to refactor them into the asset pipeline, the web player would no longer render.
+So because of this, the Web Player exists in it's own HTML page: ```/public/play.html``` which is separate from the styling and layouts from the rest of the app. The original html page, "webplayer.html", that Unity spits out is in this directory as well, which I use for reference.
+* The Unity build file should be located in this public directory as well.  This allows play.html to access it and download it to new users.
+* The build file is loaded by the webplayer here: https://github.com/mcclaskc/cassiniServer_Rails4/blob/master/public/play.html#L59
+```javascript
+u.initPlugin(jQuery("#unityPlayer")[0], "build2.unity3d");
+```
+
+Where "build2.unity3d" is the current name of the build file.
 
 Testing
 -------
