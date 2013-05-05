@@ -31,6 +31,7 @@ Environment Setup
 -----------------
 #### This is not very pedantic.  I have installed Rails on several machines of my own and helped with others.  Each installation experience has been a little different, especially depending on what OS your using.  
 ### Source Control
+I would prefer to keep this repo under my account, and not transfer ownership, so I can use it my portfolio etc.  Forking will still allow LASP to develop as they wish.  I was under the impression that the server side wasn't going to be used all that much in the Maven project anway.  Feel free to contact me if this is an issue.
 * Git
 * Github Repository: https://github.com/mcclaskc/cassiniServer_Rails4
 * Github cloning instructions: https://help.github.com/articles/fork-a-repo
@@ -83,10 +84,10 @@ Rails testing documentation: http://guides.rubyonrails.org/testing.html
 
 Documentation
 -------------
-RDOC is JAVADOC for Ruby. 
+The code documentation can be accessed locally with a browser (not on the local server, literally local directory), in the App's directory at ```doc/app/```.  It is created with RDOC, which is like Javadoc but for Ruby. 
 To generate or update your rdoc for rails: 
 ```$rake doc:app```
-This will place the documentation in ```doc/app/```, and can be accessed locally.
+This will automatically place the documentation in ```doc/app/```, and can be accessed locally with a browser.
 The comments I have made around classes and methods should be good templates
 for what rdoc wants.
 
